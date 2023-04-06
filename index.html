@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+<title>ArcGIS Online Items</title>
+
+<link rel="stylesheet" href="https://js.arcgis.com/3.43compact/dijit/themes/claro/claro.css">
+<link rel="stylesheet" href="styles.css">
+<script src="https://js.arcgis.com/3.43compact/"></script>
+<script src="login.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body class="claro">
+
+  <div id="anonymousPanel" style="display: none; padding: 5px; text-align: center;">
+    <span id="sign-in" class="action">Sign In</span> and view your ArcGIS Online items.
+  </div>
+
+  <div id="personalizedPanel" style="display: none; padding: 20px; text-align: justify;">
+    Welcome <span id="userId" style="font-weight: bold;"></span>
+     - 
+    <span id="sign-out" class="action">Sign Out</span>
+    <form>
+    <select id="itemSelector">
+    </select>
+    <input type="text" id="tagInput" placeholder="Enter a tag...">
+    <input type="button" id="submit" value="Submit">
+  </form>
+  </div>
+  
+  <div id="itemGallery" class="esri-item-gallery" style="width: 100%;"></div>
+  
+  
+</body>
+</html>
+ 

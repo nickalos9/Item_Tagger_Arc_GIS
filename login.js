@@ -1,9 +1,9 @@
 require([
   "esri/arcgis/Portal", "esri/arcgis/OAuthInfo", "esri/IdentityManager",
   "dojo/dom-style", "dojo/dom-attr", "dojo/dom", "dojo/on", "dojo/_base/array",
-"dojo/domReady!"] , 
+"dojo/domReady!", "esri/request"] , 
   function (arcgisPortal, OAuthInfo, esriId,
-  domStyle, domAttr, dom, on, arrayUtils) {
+  domStyle, domAttr, dom, on, arrayUtils, esriRequest) {
   var info = new OAuthInfo({
     appId: "sqDjy8KbXCCicMFF",
     popup: false,
@@ -115,20 +115,19 @@ function addTag(portalUser){
 var item_id = document.getElementsByClassName("esri-title");
 var jsonData = JSON.stringify(tagData, portalUser);
 var url = portalUser.arcgisPortal + "/sharing/rest/content/users/" + portalUser.username + "/items/" + item_id + "/update";
-  $.ajax({
+var tagRequest= esriRequest({
   url: url,
-  type: "UPDATE",
-  data: jsonData,
-  dataType: "json",
-  contentType: "application/json",
-  success: function (data) {
-    console.log(data);
-  },
-  error: function () {
-    console.log("error");
-  }
+  content: {f: "json"},
+  form: url
+}, {
+  returnProgress: true
+})
+.then(function(response){
+  console.log(response);
 });
-  }
+
+}
+
 });
 
 /* var itemTitle = document.getElementById("itemSelector").options[document.getElementById("itemSelector").selectedIndex].text;

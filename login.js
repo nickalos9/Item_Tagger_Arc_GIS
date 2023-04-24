@@ -113,8 +113,6 @@ var tags = esriRequest({
   url: url,
   content: {f: "json"},
   form: url
-}, {
-  returnProgress: true
 })
 .then(function(){
   console.log(tags);
